@@ -1,0 +1,18 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "the personal portfolio for Tyler Darby.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "author": "Tyler Darby",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
+}

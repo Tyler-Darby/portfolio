@@ -1,0 +1,69 @@
+<!--
+  * Portfolio - index.html
+  * by Tyler Darby
+  * This is the index page that is the root of the portfolio
+  * site. This page loads the various assets required by the
+  * website. 
+-->
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  
+  <div id="console">
+    <pre id="nametext">
+    $$$$$$$$\        $$\                          $$$$$$$\                      $$\                       
+    \__$$  __|       $$ |                         $$  __$$\                     $$ |                      
+      $$ |$$\   $$\ $$ | $$$$$$\   $$$$$$\        $$ |  $$ | $$$$$$\   $$$$$$\  $$$$$$$\  $$\   $$\       
+      $$ |$$ |  $$ |$$ |$$  __$$\ $$  __$$\       $$ |  $$ | \____$$\ $$  __$$\ $$  __$$\ $$ |  $$ |      
+      $$ |$$ |  $$ |$$ |$$$$$$$$ |$$ |  \__|      $$ |  $$ | $$$$$$$ |$$ |  \__|$$ |  $$ |$$ |  $$ |      
+      $$ |$$ |  $$ |$$ |$$   ____|$$ |            $$ |  $$ |$$  __$$ |$$ |      $$ |  $$ |$$ |  $$ |      
+      $$ |\$$$$$$$ |$$ |\$$$$$$$\ $$ |            $$$$$$$  |\$$$$$$$ |$$ |      $$$$$$$  |\$$$$$$$ |      
+      \__| \____$$ |\__| \_______|\__|            \_______/  \_______|\__|      \_______/  \____$$ |      
+          $$\   $$ |                                                                      $$\   $$ |      
+          \$$$$$$  |                                                                      \$$$$$$  |      
+            \______/                                                                        \______/       
+    </pre>
+    <p>Initializing...</p>
+    <p>You have connected from <span id="location">...</span> with the IP <span id="ip">...</span>.</p>
+    <div id="cloutputcontainer"></div>
+    <div id="clinputcontainer">
+      <label for="clinput"><span class="braces">[</span><span class="uname">visitor</span>@<span class="hostname">tylerdarby.me</span><span class="braces">]</span>~$</label>
+    </div>
+    <span><input name="clinput" id="clinput" type="text"></span>
+  </div>
+  
+  <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+<footer>
+  <div id="footer">
+    <p style="display: inline-block;">Copyright Tyler Darby 2020. All rights reserved.</p>
+  </div>
+</footer>
+
+</html>
