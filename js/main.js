@@ -18,9 +18,11 @@ $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
 var inputCount = 0;
 var input = $("#clinput");
 
-var commands = {
-    view: function(text) {
 
+
+var commands = {
+    viewpage: function(text) {
+        
     },
     help: function(text) {
         var str = "";
@@ -41,33 +43,40 @@ var commands = {
     clear: function(text) {
         $("#cloutputcontainer").empty();
         return "";
+    },
+    listpages: function(text) {
+
     }
 }
 
 var helpText = [
     [
-        "view <page>",
-        "view the specified page's contents."
-    ],
-    [
-        "help",
-        "prints a list of available commands and their usage."
-    ],
-    [
-        "viewblog",
-        "redirects to the blog portion of the site."
+        "clear",
+        "clears the current output history on the screen."
     ],
     [
         "email",
         "opens an email to me in your default mail client."
     ],
     [
+        "help",
+        "prints a list of available commands and their usage."
+    ],
+    [
+        "listpages",
+        "prints a list of available pages."
+    ],
+    [
         "secret",
         "it's an easter egg! :)"
     ],
     [
-        "clear",
-        "clears the current output history on the screen."
+        "viewblog",
+        "redirects to the blog portion of the site."
+    ],
+    [
+        "viewpage <page>",
+        "view the specified page's contents."
     ]
 ];
 
@@ -133,7 +142,7 @@ function executeCommand(text) {
 
 /* Initializer Scripts */
 
-var initCommands = ["view about.txt", "view education.txt", "view projects.txt"];
+var initCommands = ["viewpage about", "viewpage education", "viewpage projects"];
 // An event listener to know when a command is done executing.
 var initCommandCounter = 0;
 window.addEventListener('typerFinished', function() {
@@ -146,4 +155,4 @@ window.addEventListener('typerFinished', function() {
     initCommandCounter++;
 });
 // Manually execute the first command. 
-typeCommand("view welcome.txt");
+typeCommand("viewpage welcome");

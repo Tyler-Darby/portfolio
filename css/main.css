@@ -145,6 +145,10 @@ a {
   width: 500px;
 }
 
+#clinput:focus {
+  outline: none;
+}
+
 #nametext {
   color: #0f0;
 }
