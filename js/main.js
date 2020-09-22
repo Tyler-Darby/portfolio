@@ -18,11 +18,28 @@ $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
 var inputCount = 0;
 var input = $("#clinput");
 
-
-
+/**
+ * This object contains the code for the various commands that can
+ * be called from the main page.
+ */
 var commands = {
     viewpage: function(text) {
-        
+        $.ajax({
+            url: "pages/" + text,
+            dataType: 'text',
+            method: 'GET',
+            success: function(res) {
+                if (res == "") {
+                    $("#cloutputcontainer").append("<p class='cmdResult'>Error: The page you have requested cannot be found!</p>");
+                } else {
+                    $("#cloutputcontainer").append("<p class='cmdResult'>" + res + "</p>");
+                }
+            },
+            error: function() {
+                $("#cloutputcontainer").append("<p class='cmdResult'>Error: The page you have requested cannot be found!</p>");
+            }
+        });
+        return "";
     },
     help: function(text) {
         var str = "";
@@ -133,7 +150,11 @@ function executeCommand(text) {
     }
     if (commands[cmd]) {
         var result = commands[cmd](args);
-        $("#cloutputcontainer").append("<p class='cmdResult'>" + result + "</p>");
+        // Handle commands that produce their own output vs commands that rely on
+        // executeCommand() to handle the output of the result.
+        if (result != "") {
+            $("#cloutputcontainer").append("<p class='cmdResult'>" + result + "</p>");
+        }
     } else {
         $("#cloutputcontainer").append("<p class='cmdResult'>Error: The specified command was not found.</p>");
     }
@@ -142,7 +163,7 @@ function executeCommand(text) {
 
 /* Initializer Scripts */
 
-var initCommands = ["viewpage about", "viewpage education", "viewpage projects"];
+var initCommands = ["viewpage about.html", "viewpage education.html", "viewpage projects.html"];
 // An event listener to know when a command is done executing.
 var initCommandCounter = 0;
 window.addEventListener('typerFinished', function() {
@@ -155,4 +176,4 @@ window.addEventListener('typerFinished', function() {
     initCommandCounter++;
 });
 // Manually execute the first command. 
-typeCommand("viewpage welcome");
+typeCommand("viewpage welcome.html");
