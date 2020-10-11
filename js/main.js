@@ -101,6 +101,7 @@ var helpText = [
 
 input.focus();
 window.addEventListener('focus', focusInput);
+window.addEventListener('click', focusInput);
 
 $(document).keypress(function(e){
     if (e.which == 13) {
@@ -163,7 +164,7 @@ function executeCommand(text) {
 
 /* Initializer Scripts */
 
-var initCommands = ["viewpage about.html", "viewpage education.html", "viewpage projects.html"];
+var initCommands = ["viewpage about.html", "viewpage experience.html", "viewpage projects.html"];
 // An event listener to know when a command is done executing.
 var initCommandCounter = 0;
 window.addEventListener('typerFinished', function() {
