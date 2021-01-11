@@ -102,6 +102,7 @@ var helpText = [
 input.focus();
 window.addEventListener('focus', focusInput);
 window.addEventListener('click', focusInput);
+window.addEventListener('touchend', focusInput);
 
 $(document).keypress(function(e){
     if (e.which == 13) {
@@ -159,7 +160,7 @@ function executeCommand(text) {
     } else {
         $("#cloutputcontainer").append("<p class='cmdResult'>Error: The specified command was not found.</p>");
     }
-    window.scroll(0, $(document).height());
+    
 }
 
 /* Initializer Scripts */

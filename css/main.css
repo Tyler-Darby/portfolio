@@ -171,7 +171,8 @@ a {
   font-family: courier, monospace;
   color: #fff;
   font-size: 14px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  background-color: #000;
 }
 
 .braces {
