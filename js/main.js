@@ -102,7 +102,6 @@ var helpText = [
 input.focus();
 window.addEventListener('focus', focusInput);
 window.addEventListener('click', focusInput);
-window.addEventListener('touchend', focusInput);
 
 $(document).keypress(function(e){
     if (e.which == 13) {
@@ -120,11 +119,13 @@ function addInputLine(text) {
     $("#inputLine"+inputCount).append(text);
     $("#inputLine"+inputCount).css("word-wrap", "break-word");
     executeCommand(text, inputCount);
+    window.scrollTo(0,document.body.scrollHeight);
     inputCount++;
 }
 
 function focusInput() {
     input.focus();
+    window.scrollTo(0,document.body.scrollHeight);
 }
 
 function typeCommand(text) {
