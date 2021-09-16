@@ -5,7 +5,7 @@ description   : "A place to document my projects, so you don't have to suffer li
 keywords      : "space, ham, amateur, radio, satellite, satnogs"
 domain        : tylerdarby.me
 url           : http://tylerdarby.me # site url
-baseurl       : "/projects/" # apply repo name like "/myproject" if used under gh-pages branch, else (under master branch) just leave empty/blank
+baseurl       : "/projects" # apply repo name like "/myproject" if used under gh-pages branch, else (under master branch) just leave empty/blank
 cover         : "" # image uri like logo/cover image for site seo
 
 google_analytics  : UA-XXXXX-XX
