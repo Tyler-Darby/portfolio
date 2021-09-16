@@ -20,7 +20,7 @@ permalink   : /:year/:title/
 markdown    : kramdown
 highlighter : rouge
 
-source      : ./jekyll_src
+source      : ./_jekyll_src
 destination : ./projects
 
 # Sass configuration
