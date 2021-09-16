@@ -1,0 +1,25 @@
+@import "bourbon/bourbon";
+
+@import "variables";
+@import "base/base";
+
+@import "layout";
+@import "syntax-highlighting";
+
+.category-title, .post-title {
+    color: $green-color;
+}
+
+.logo a {
+    color: $green-color;
+}
+
+.cursorflash {
+    animation: blinker 1s steps(1,end) infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
