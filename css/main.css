@@ -7,7 +7,7 @@
 */
 
 /* ==========================================================================
-   Base styles: opinionated defaults
+   Boilerplate Defaults (html5-boilerplate)
    ========================================================================== */
 
 html {
@@ -15,16 +15,6 @@ html {
   font-size: 1em;
   line-height: 1.4;
 }
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Vendor-prefixed and regular ::selection selectors cannot be combined:
- * https://stackoverflow.com/a/16982510/7133471
- *
- * Customize the background color to match your design.
- */
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -36,10 +26,6 @@ html {
   text-shadow: none;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
 hr {
   display: block;
   height: 1px;
@@ -48,12 +34,6 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
 
 audio,
 canvas,
@@ -82,38 +62,33 @@ textarea {
   resize: vertical;
 }
 
-/* ==========================================================================
-   Browser Upgrade Prompt
-   ========================================================================== */
-
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 /* !!!!!!!!!!!!!!!!!!!!!!!!!! */
 /* ==========================================================================
-   Author's custom styles
+   Main Styles
    ========================================================================== */
 
 body {
   background-color: #000;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 #console {
   font-family: courier, monospace;
   color: #fff;
-  width:800px;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:100px;
+  width: 100%; /* Ensure console fits within viewport */
+  max-width: 800px; /* Maintain max width for larger screens */
+  margin: 20px auto; /* Apply margin and center horizontally */
+  margin-top: 100px;
   margin-bottom: 100px;
-  font-size:14px;
+  font-size: 14px;
+  box-sizing: border-box; /* Include padding and border in the element's total width */
 }
 
 #logo {
   max-width: 100%;
+  display: block;
+  text-align: center; /* Center the logo horizontally */
+  margin: 0 auto; /* Center the logo horizontally */
 }
 
 a {
@@ -161,8 +136,6 @@ a {
   display: inline;
 }
 
-
-
 #footer {
   text-align: center; 
   position: fixed; 
@@ -187,7 +160,32 @@ a {
   color: rgb(151, 22, 13);
 }
 
+@media only screen and (max-width: 800px) {
+  #console {
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 8%;
+  }
 
+  #clinput {
+    width: 100%;
+  }
+
+  #footer {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 801px) {
+  #console {
+    font-size: 14px; /* Adjust font size for larger screens */
+  }
+
+  #logo {
+    max-width: 80%; /* Adjust logo size for larger screens */
+  }
+}
 
 @keyframes change {
       0%  { color:  #0f0; }
@@ -197,7 +195,7 @@ a {
 /* !!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 /* ==========================================================================
-   Helper classes
+   Helper Classes - (html5-boilerplate)
    ========================================================================== */
 
 /*
@@ -210,11 +208,6 @@ a {
 
 /*
 * Hide only visually, but have it available for screen readers:
-* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-*
-* 1. For long content, line feeds are not interpreted as spaces and small width
-*    causes content to wrap 1 word per line:
-*    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
 */
 
 .sr-only {
@@ -232,8 +225,7 @@ a {
 
 /*
 * Extends the .sr-only class to allow the element
-* to be focusable when navigated to via the keyboard:
-* https://www.drupal.org/node/897638
+* to be focusable when navigated to via the keyboard: 
 */
 
 .sr-only.focusable:active,
@@ -257,14 +249,6 @@ a {
 
 /*
 * Clearfix: contain floats
-*
-* For modern browsers
-* 1. The space content is one way to avoid an Opera bug when the
-*    `contenteditable` attribute is included anywhere else in the document.
-*    Otherwise it causes space to appear at the top and bottom of elements
-*    that receive the `clearfix` class.
-* 2. The use of `table` rather than `block` is only necessary if using
-*    `:before` to contain the top-margins of child elements.
 */
 
 .clearfix:before,
@@ -280,26 +264,17 @@ a {
 }
 
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   Media queries (html5-boilerplate)
    ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
 
 @media print,
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 1.25dppx),
   (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
    Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
 
 @media print {
@@ -338,10 +313,7 @@ a {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
-  /*
-     * Printing Tables:
-     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
+
   thead {
     display: table-header-group;
   }
