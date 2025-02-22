@@ -6,9 +6,9 @@
  */
 
 // Executing this AJAX request first to load values faster.
-$.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-    var ip = data.geoplugin_request;
-    var location = data.geoplugin_city + ", " + data.geoplugin_regionCode;
+$.getJSON('https://ipapi.co/json/', function(data) {
+    var ip = data.ip;
+    var location = data.region + ", " + data.region_code;
   
     $("#ip").text(ip);
     $("#location").text(location);
