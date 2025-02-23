@@ -2,21 +2,23 @@
  * Portfolio - main.js
  * by Tyler Darby
  * This file contains the core JavaScript code required to run
- * the portfolio site. Written with jQuery. 
+ * the portfolio site.
  */
 
 // Executing this AJAX request first to load values faster.
-$.getJSON('https://ipapi.co/json/', function(data) {
-    var ip = data.ip;
-    var location = data.region + ", " + data.region_code;
-  
-    $("#ip").text(ip);
-    $("#location").text(location);
-});
+fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+        var ip = data.ip;
+        var location = data.region + ", " + data.region_code;
+
+        document.getElementById("ip").textContent = ip;
+        document.getElementById("location").textContent = location;
+    });
 
 /* Global Variables */
 var inputCount = 0;
-var input = $("#clinput");
+var input = document.getElementById("clinput");
 
 /**
  * This object contains the code for the various commands that can
@@ -24,21 +26,18 @@ var input = $("#clinput");
  */
 var commands = {
     viewpage: function(text) {
-        $.ajax({
-            url: "pages/" + text,
-            dataType: 'text',
-            method: 'GET',
-            success: function(res) {
+        fetch("pages/" + text)
+            .then(response => response.text())
+            .then(res => {
                 if (res == "") {
-                    $("#cloutputcontainer").append("<p class='cmdResult'>Error: The page you have requested cannot be found!</p>");
+                    document.getElementById("cloutputcontainer").innerHTML += "<p class='cmdResult'>Error: The page you have requested cannot be found!</p>";
                 } else {
-                    $("#cloutputcontainer").append("<p class='cmdResult'>" + res + "</p>");
+                    document.getElementById("cloutputcontainer").innerHTML += "<p class='cmdResult'>" + res + "</p>";
                 }
-            },
-            error: function() {
-                $("#cloutputcontainer").append("<p class='cmdResult'>Error: The page you have requested cannot be found!</p>");
-            }
-        });
+            })
+            .catch(() => {
+                document.getElementById("cloutputcontainer").innerHTML += "<p class='cmdResult'>Error: The page you have requested cannot be found!</p>";
+            });
         return "";
     },
     help: function(text) {
@@ -59,7 +58,7 @@ var commands = {
         return "You found the easter egg! 🥚";
     },
     clear: function(text) {
-        $("#cloutputcontainer").empty();
+        document.getElementById("cloutputcontainer").innerHTML = "";
         return "";
     },
     listpages: function(text) {
@@ -123,10 +122,10 @@ input.focus();
 window.addEventListener('focus', focusInput);
 window.addEventListener('click', focusInput);
 
-$(document).keypress(function(e){
+document.addEventListener('keypress', function(e){
     if (e.which == 13) {
-        addInputLine(input.val());
-        input.val('');
+        addInputLine(input.value);
+        input.value = '';
     }
 });
 
@@ -135,17 +134,18 @@ var typerFinish = new Event('typerFinished');
 /* Functions */
 
 function addInputLine(text) {
-    $("#cloutputcontainer").append('<p id="inputLine' + inputCount + '"><span class="braces">[</span><span class="uname">visitor</span>@<span class="hostname">tylerdarby.me</span><span class="braces">]</span>~$ </label>');
-    $("#inputLine"+inputCount).append(text);
-    $("#inputLine"+inputCount).css("word-wrap", "break-word");
+    var cloutputcontainer = document.getElementById("cloutputcontainer");
+    cloutputcontainer.innerHTML += '<p id="inputLine' + inputCount + '"><span class="braces">[</span><span class="uname">visitor</span>@<span class="hostname">tylerdarby.me</span><span class="braces">]</span>~$ </label>';
+    document.getElementById("inputLine" + inputCount).innerHTML += text;
+    document.getElementById("inputLine" + inputCount).style.wordWrap = "break-word";
     executeCommand(text, inputCount);
-    window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
     inputCount++;
 }
 
 function focusInput() {
     input.focus();
-    window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function typeCommand(text) {
@@ -154,19 +154,19 @@ function typeCommand(text) {
         if (typerCount == text.length) {
             clearInterval(interval);
             addInputLine(text);
-            input.val('');
+            input.value = '';
             dispatchEvent(typerFinish);
             return;
         }
         var c = text.charAt(typerCount);
-        input.val(input.val() + c);
+        input.value += c;
         typerCount++;
     }, 50);
 }
 
 function executeCommand(text) {
-    var cmd = text.substring(0,text.search(" "));
-    var args = text.substring(text.search(" ")+1, text.length);
+    var cmd = text.substring(0, text.search(" "));
+    var args = text.substring(text.search(" ") + 1, text.length);
     if (text.search(" ") == -1) {
         cmd = text;
         args = "";
@@ -176,12 +176,11 @@ function executeCommand(text) {
         // Handle commands that produce their own output vs commands that rely on
         // executeCommand() to handle the output of the result.
         if (result != "") {
-            $("#cloutputcontainer").append("<p class='cmdResult'>" + result + "</p>");
+            document.getElementById("cloutputcontainer").innerHTML += "<p class='cmdResult'>" + result + "</p>";
         }
     } else {
-        $("#cloutputcontainer").append("<p class='cmdResult'>Error: The specified command was not found.</p>");
+        document.getElementById("cloutputcontainer").innerHTML += "<p class='cmdResult'>Error: The specified command was not found.</p>";
     }
-    
 }
 
 /* Initializer Scripts */
@@ -199,4 +198,4 @@ window.addEventListener('typerFinished', function() {
     initCommandCounter++;
 });
 // Manually execute the first command. 
-//typeCommand("viewpage welcome.html");
+typeCommand("viewpage welcome.html");
