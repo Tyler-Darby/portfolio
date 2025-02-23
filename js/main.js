@@ -49,20 +49,25 @@ var commands = {
         return str;
     },
     viewblog: function(text) {
-
+        return "Still on the to-do list!";
     },
     email: function(text) {
-
+        window.location.href = "mailto:tyler@tylerdarby.me";
+        return "Opening email client...";
     },
     secret: function(text) {
-
+        return "You found the easter egg! 🥚";
     },
     clear: function(text) {
         $("#cloutputcontainer").empty();
         return "";
     },
     listpages: function(text) {
-
+        var str = "";
+        pageList.forEach(element => {
+            str += "<b>" + element[0] + "</b> - " + element[1] + "<br>";
+        });
+        return str;
     }
 }
 
@@ -84,10 +89,6 @@ var helpText = [
         "prints a list of available pages."
     ],
     [
-        "secret",
-        "it's an easter egg! :)"
-    ],
-    [
         "viewblog",
         "redirects to the blog portion of the site."
     ],
@@ -96,6 +97,25 @@ var helpText = [
         "view the specified page's contents."
     ]
 ];
+
+var pageList = [
+    [
+        "about.html",
+        ""
+    ],
+    [
+        "experience.html",
+        ""
+    ],
+    [
+        "projects.html",
+        ""
+    ],
+    [
+        "welcome.html",
+        ""
+    ]
+]
 
 /* Event Handlers */
 
@@ -179,4 +199,4 @@ window.addEventListener('typerFinished', function() {
     initCommandCounter++;
 });
 // Manually execute the first command. 
-typeCommand("viewpage welcome.html");
+//typeCommand("viewpage welcome.html");
